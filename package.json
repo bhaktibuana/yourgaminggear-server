@@ -1,0 +1,33 @@
+{
+  "name": "yourgaminggear-server",
+  "version": "1.0.0",
+  "description": "yourgaminggear-server is a server side of Your Gaming Gear mini-project from Dibimbing course. This project is built with ExpressJs framework and uses MySQL as the database.",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon ./app.js",
+    "migrate": "node ./db/migration/table.migration.js",
+    "seeder": "node ./db/seeder/data.seeder.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhaktibuana/yourgaminggear-server.git"
+  },
+  "author": "Bhakti Mega Buana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhaktibuana/yourgaminggear-server/issues"
+  },
+  "homepage": "https://github.com/bhaktibuana/yourgaminggear-server#readme",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.15",
+    "yup": "^0.32.11"
+  }
+}

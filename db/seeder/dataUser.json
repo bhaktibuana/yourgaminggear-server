@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Admin",
+    "email": "admin@example.com",
+    "password": "admin",
+    "address": "admin street",
+    "phone_number": "081239741689"
+  }
+]

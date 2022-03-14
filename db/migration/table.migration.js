@@ -64,6 +64,7 @@ const createUserQuery = `
     password VARCHAR (255) NOT NULL,
     address VARCHAR (255) NOT NULL,
     phone_number VARCHAR (20) NOT NULL,
+    image_url VARCHAR (255) NOT NULL,
     join_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
     is_deleted BOOLEAN NOT NULL DEFAULT false,

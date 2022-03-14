@@ -4,6 +4,7 @@
     "email": "admin@example.com",
     "password": "admin",
     "address": "admin street",
-    "phone_number": "081239741689"
+    "phone_number": "081239741689",
+    "image_url": "/product_img/profile_default-1647184267.png"
   }
 ]

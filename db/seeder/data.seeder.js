@@ -70,7 +70,7 @@ dataProduct.forEach((value) => {
 });
 
 dataUser.forEach((value) => {
-  const insertQuery = `INSERT INTO user (name, email, password, address, phone_number) VALUES (?, ?, ?, ?, ?);`;
+  const insertQuery = `INSERT INTO user (name, email, password, address, phone_number, image_url) VALUES (?, ?, ?, ?, ?, ?);`;
   db.query(
     insertQuery,
     [
@@ -79,6 +79,7 @@ dataUser.forEach((value) => {
       crypto.createHash("sha256").update(value.password).digest("hex"),
       value.address,
       value.phone_number,
+      value.image_url,
     ],
     (error, results) => {
       if (error) {

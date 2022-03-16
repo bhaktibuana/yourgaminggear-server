@@ -1,12 +1,22 @@
 const db = require("../../config/dbConnection");
 
-const select = (callback) => {
-  const selectQuery = `SELECT p.id, p.name, c.name AS category, p.quantity, p.price, p.image_url FROM product AS p JOIN product_category AS pc ON p.id = pc.product_id JOIN category AS c ON pc.category_id = c.id WHERE is_deleted = FALSE ORDER BY p.id;`;
+const count = (callback) => {
+  const selectQuery = `SELECT COUNT(*) AS total FROM product WHERE is_deleted = FALSE;`;
   db.query(selectQuery, callback);
+}
+
+const select = (params, callback) => {
+  const selectQuery = `SELECT p.id, p.name, c.name AS category, p.quantity, p.price, p.image_url FROM product AS p JOIN product_category AS pc ON p.id = pc.product_id JOIN category AS c ON pc.category_id = c.id WHERE is_deleted = FALSE ORDER BY p.id ASC LIMIT ?, ?;`;
+  db.query(selectQuery, params, callback);
 };
 
+const countByCategory = (params, callback) => {
+  const selectQuery = `SELECT COUNT(*) AS total FROM product AS p JOIN product_category AS pc ON p.id = pc.product_id JOIN category AS c ON pc.category_id = c.id WHERE is_deleted = FALSE AND c.name = ?;`
+  db.query(selectQuery, params, callback);
+}
+
 const selectByCategory = (params, callback) => {
-  const selectQuery = `SELECT p.id, p.name, c.name AS category, p.quantity, p.price, p.image_url FROM product AS p JOIN product_category AS pc ON p.id = pc.product_id JOIN category AS c ON pc.category_id = c.id WHERE is_deleted = FALSE AND c.name = ? ORDER BY p.id;`;
+  const selectQuery = `SELECT p.id, p.name, c.name AS category, p.quantity, p.price, p.image_url FROM product AS p JOIN product_category AS pc ON p.id = pc.product_id JOIN category AS c ON pc.category_id = c.id WHERE is_deleted = FALSE AND c.name = ? ORDER BY p.id ASC LIMIT ?, ?;`;
   db.query(selectQuery, params, callback);
 };
 
@@ -56,7 +66,9 @@ const softDelete = (params, callback) => {
 };
 
 module.exports = {
+  count,
   select,
+  countByCategory,
   selectByCategory,
   selectProductId,
   selectCategoryId,

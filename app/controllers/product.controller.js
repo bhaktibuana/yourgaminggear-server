@@ -1,45 +1,75 @@
 const productModel = require("../models/product.model");
 
 const getProducts = (req, res) => {
-  productModel.select((error, results) => {
+  const page = parseInt(req.query.page);
+  const size = parseInt(req.query.size);
+
+  productModel.count((error, results) => {
     if (error) {
       res.status(500).json(error);
     } else {
-      if (results.length === 0) {
-        res.status(404).json({
-          message: "Product not found.",
-        });
-      } else {
-        for (let i in results) {
-          results[i].image_url = `${req.protocol}://${req.get("host")}${
-            results[i].image_url
-          }`;
+      const totalProducts = results[0].total;
+
+      productModel.select([(page - 1) * size, size], (error, results) => {
+        if (error) {
+          res.status(500).json(error);
+        } else {
+          if (results.length === 0) {
+            res.status(404).json({
+              message: "Product not found.",
+            });
+          } else {
+            for (let i in results) {
+              results[i].image_url = `${req.protocol}://${req.get("host")}${
+                results[i].image_url
+              }`;
+            }
+            res.status(200).json({
+              data: results,
+              totalPages: totalProducts,
+            });
+          }
         }
-        res.status(200).json(results);
-      }
+      });
     }
   });
 };
 
 const getProductsByCategory = (req, res) => {
-  const params = req.params.category;
+  const category = req.params.category;
+  const page = parseInt(req.query.page);
+  const size = parseInt(req.query.size);
 
-  productModel.selectByCategory([params], (error, results) => {
+  productModel.countByCategory([category], (error, results) => {
     if (error) {
       res.status(500).json(error);
     } else {
-      if (results.length === 0) {
-        res.status(404).json({
-          message: "Product not found.",
-        });
-      } else {
-        for (let i in results) {
-          results[i].image_url = `${req.protocol}://${req.get("host")}${
-            results[i].image_url
-          }`;
+      const totalProducts = results[0].total;
+
+      productModel.selectByCategory(
+        [category, (page - 1) * size, size],
+        (error, results) => {
+          if (error) {
+            res.status(500).json(error);
+          } else {
+            if (results.length === 0) {
+              res.status(404).json({
+                message: "Product not found.",
+              });
+            } else {
+              for (let i in results) {
+                results[i].image_url = `${req.protocol}://${req.get("host")}${
+                  results[i].image_url
+                }`;
+              }
+              res.status(200).json({
+                data: results,
+                totalPages: totalProducts,
+              });
+            }
+          }
         }
-        res.status(200).json(results);
-      }
+      );
     }
   });
 };

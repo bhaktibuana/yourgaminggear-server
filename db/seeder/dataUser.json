@@ -2,8 +2,8 @@
   {
     "name": "Admin",
     "email": "admin@example.com",
-    "password": "admin",
-    "address": "admin street",
+    "password": "admin1234",
+    "address": "Admin Street Number 72 (61111)",
     "phone_number": "081239741689",
     "image_url": "/profile_img/profile_default-1647184267.png"
   }

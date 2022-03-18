@@ -20,6 +20,11 @@ const selectByCategory = (params, callback) => {
   db.query(selectQuery, params, callback);
 };
 
+const selectById = (params, callback) => {
+  const selectQuery = `SELECT p.id, p.name, c.name AS category, p.quantity, p.price, p.image_url FROM product AS p JOIN product_category AS pc ON p.id = pc.product_id JOIN category AS c ON pc.category_id = c.id WHERE is_deleted = FALSE AND p.id = ?;`;
+  db.query(selectQuery, params, callback);
+}
+
 const selectProductId = (params, callback) => {
   const selectQuery = `SELECT id FROM product WHERE name = ? AND price = ? AND image_url = ?;`;
   db.query(selectQuery, params, callback);
@@ -70,6 +75,7 @@ module.exports = {
   select,
   countByCategory,
   selectByCategory,
+  selectById,
   selectProductId,
   selectCategoryId,
   create,

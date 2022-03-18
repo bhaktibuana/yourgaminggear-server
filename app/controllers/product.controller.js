@@ -74,6 +74,30 @@ const getProductsByCategory = (req, res) => {
   });
 };
 
+const getProductById = (req, res) => {
+  const id = parseInt(req.params.id);
+
+  productModel.selectById([id], (error, results) => {
+    if (error) {
+      res.status(500).json(error);
+    } else {
+      if (results.length === 0) {
+        res.status(404).json({
+          message: "Product not found.",
+        });
+      } else {
+        for (let i in results) {
+          results[i].image_url = `${req.protocol}://${req.get("host")}${
+            results[i].image_url
+          }`;
+        }
+
+        res.status(200).json(results[0]);
+      }
+    }
+  });
+};
+
 const addProductDefault = (req, res) => {
   const params = {
     name: req.body.name,
@@ -257,6 +281,7 @@ const deleteProduct = (req, res) => {
 module.exports = {
   getProducts,
   getProductsByCategory,
+  getProductById,
   addProductDefault,
   addProduct,
   updateProductDefault,

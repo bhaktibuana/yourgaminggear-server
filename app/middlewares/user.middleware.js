@@ -1,7 +1,6 @@
 const userModel = require("../models/user.model");
-const jwt = require("jsonwebtoken");
-const validator = require("validator");
 const yup = require("yup");
+require("yup-phone");
 require("dotenv").config();
 
 const registerValidation = (req, res, next) => {
@@ -11,7 +10,7 @@ const registerValidation = (req, res, next) => {
     password: req.body.password,
     password_confirmation: req.body.password_confirmation,
     address: req.body.address,
-    phone_number: validator.isMobilePhone(req.body.phone_number, "id-ID"),
+    phone_number: req.body.phone_number,
   };
 
   const schema = yup.object().shape({
@@ -24,13 +23,7 @@ const registerValidation = (req, res, next) => {
       .matches(data.password, "password does not match")
       .required(),
     address: yup.string().max(255).required(),
-    phone_number: yup
-      .bool()
-      .oneOf(
-        [true],
-        "invalid phone number format, please use Indonesian format"
-      )
-      .required(),
+    phone_number: yup.string().phone("ID").required(),
   });
 
   schema
@@ -85,17 +78,11 @@ const loginEmailValidation = (req, res, next) => {
   const data = {
     email: req.body.email,
     password: req.body.password,
-    password_confirmation: req.body.password_confirmation,
   };
 
   const schema = yup.object().shape({
     email: yup.string().email().required(),
     password: yup.string().min(8).required(),
-    password_confirmation: yup
-      .string()
-      .min(8)
-      .matches(data.password, "password does not match")
-      .required(),
   });
 
   schema
@@ -112,25 +99,13 @@ const loginEmailValidation = (req, res, next) => {
 
 const loginPhoneValidation = (req, res, next) => {
   const data = {
-    phone_number: validator.isMobilePhone(req.body.phone_number, "id-ID"),
+    phone_number: req.body.phone_number,
     password: req.body.password,
-    password_confirmation: req.body.password_confirmation,
   };
 
   const schema = yup.object().shape({
-    phone_number: yup
-      .bool()
-      .oneOf(
-        [true],
-        "invalid phone number format, please use Indonesian format"
-      )
-      .required(),
+    phone_number: yup.string().phone("ID").required(),
     password: yup.string().min(8).required(),
-    password_confirmation: yup
-      .string()
-      .min(8)
-      .matches(data.password, "password does not match")
-      .required(),
   });
 
   schema
@@ -210,17 +185,11 @@ const updateAddressValidation = (req, res, next) => {
 
 const updatePhoneValidation = (req, res, next) => {
   const data = {
-    phone_number: validator.isMobilePhone(req.body.phone_number, "id-ID"),
+    phone_number: req.body.phone_number,
   };
 
   const schema = yup.object().shape({
-    phone_number: yup
-      .bool()
-      .oneOf(
-        [true],
-        "invalid phone number format, please use Indonesian format"
-      )
-      .required(),
+    phone_number: yup.string().phone("ID").required(),
   });
 
   schema

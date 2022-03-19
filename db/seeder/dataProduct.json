@@ -3,84 +3,84 @@
     "name": "Steelseries Rival 5 (Wired)",
     "price": 999000,
     "quantity": 5,
-    "image_url": "/product_img/product_default-1647184268.jpg",
+    "image_url": "/product_img/steelseries_rival_5-1647184268.png",
     "category": "mouse"
   },
   {
     "name": "Steelseries Rival 600 (Wired)",
     "price": 1299000,
     "quantity": 3,
-    "image_url": "/product_img/product_default-1647184268.jpg",
+    "image_url": "/product_img/steelseries_rival_600-1647184269.png",
     "category": "mouse"
   },
   {
     "name": "Steelseries Apex Pro (Full Size)",
     "price": 2999000,
     "quantity": 4,
-    "image_url": "/product_img/product_default-1647184268.jpg",
+    "image_url": "/product_img/steelseries_apex_pro_full-1647184270.png",
     "category": "keyboard"
   },
   {
     "name": "Steelseries Apex Pro (TKL)",
     "price": 2699000,
     "quantity": 4,
-    "image_url": "/product_img/product_default-1647184268.jpg",
+    "image_url": "/product_img/steelseries_apex_pro_tkl-1647184271.png",
     "category": "keyboard"
   },
   {
     "name": "Steelseries Arctis 7 (Wireless)",
     "price": 2899000,
     "quantity": 5,
-    "image_url": "/product_img/product_default-1647184268.jpg",
+    "image_url": "/product_img/steelseries_arctis_7_wireless-1647184272.png",
     "category": "headset"
   },
   {
     "name": "Steelseries Arctis 3 (Wired)",
     "price": 1199000,
     "quantity": 3,
-    "image_url": "/product_img/product_default-1647184268.jpg",
+    "image_url": "/product_img/steelseries_arctis_3_wired-1647184273.png",
     "category": "headset"
   },
   {
     "name": "Steelseries Arctis Pro (Wired)",
     "price": 2899000,
     "quantity": 4,
-    "image_url": "/product_img/product_default-1647184268.jpg",
+    "image_url": "/product_img/steelseries_arctis_pro_wired-1647184274.png",
     "category": "headset"
   },
   {
     "name": "Steelseries Arctis 5 (Wired)",
     "price": 1399000,
     "quantity": 4,
-    "image_url": "/product_img/product_default-1647184268.jpg",
+    "image_url": "/product_img/steelseries_arctis_5_wired-1647184275.png",
     "category": "headset"
   },
   {
     "name": "Steelseries QCK Prism Cloth (XL)",
     "price": 799000,
     "quantity": 5,
-    "image_url": "/product_img/product_default-1647184268.jpg",
+    "image_url": "/product_img/steelseries_qck_prism_cloth_xl-1647184276.png",
     "category": "mousepad"
   },
   {
     "name": "Steelseries QCK Prism NEO Noir Edition (XL)",
     "price": 899000,
     "quantity": 3,
-    "image_url": "/product_img/product_default-1647184268.jpg",
+    "image_url": "/product_img/steelseries_qck_prism_neo_noir_xl-1647184277.png",
     "category": "mousepad"
   },
   {
     "name": "Secretlab TITAN Evo 2022 NEO Hybrid",
     "price": 7399000,
     "quantity": 7,
-    "image_url": "/product_img/product_default-1647184268.jpg",
+    "image_url": "/product_img/secret_lab_titan_evo_2022_neo_hybrid-1647184278.png",
     "category": "chair"
   },
   {
     "name": "Secretlab TITAN Evo 2022 Dark Knight",
     "price": 7699000,
     "quantity": 4,
-    "image_url": "/product_img/product_default-1647184268.jpg",
+    "image_url": "/product_img/secret_lab_titan_evo_2022_dark_knight-1647184279.png",
     "category": "chair"
   }
 ]
